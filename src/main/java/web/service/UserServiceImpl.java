@@ -6,6 +6,7 @@ import web.model.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -16,26 +17,31 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    @Transactional
     public void delete(int id) {
         userDao.delete(id);
     }
 
     @Override
+    @Transactional
     public void add(User user) {
         userDao.add(user);
     }
 
     @Override
+    @Transactional
     public User getById(int id) {
         return userDao.getById(id);
     }
 
     @Override
+    @Transactional
     public void update(User user) {
     userDao.update(user);
     }
 
     @Override
+    @Transactional
     public List<User> listUsers() {
         return userDao.listUsers();
     }
